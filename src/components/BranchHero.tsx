@@ -20,7 +20,7 @@ export const BranchHero = ({ b }: { b: Branch }) => {
   const [switching, setSwitching] = useState(false);
   const ready = useSplashDone();
   // Hoverkleur van knoppen = kleur van de andere tak, zodat hij afsteekt.
-  const hoverCls = b.key === "verhuizen" ? "btn-night" : "";
+  const hoverCls = b.key === "verhuizen" ? "btn-coral" : "";
 
   useEffect(() => {
     router.prefetch(o.href);
@@ -45,7 +45,7 @@ export const BranchHero = ({ b }: { b: Branch }) => {
         <div className="relative z-10 flex w-full flex-col justify-end px-6 pb-10 pt-24 md:justify-center md:px-[clamp(28px,7vw,120px)] md:pb-0">
           <div className="max-w-[560px]">
             <FadeUp>
-              <BackButton tone={b.key === "verhuizen" ? "brand" : "night"} />
+              <BackButton tone={b.key === "verhuizen" ? "brand" : "coral"} />
             </FadeUp>
             <FadeUp delay={0.1}>
               <p className="kicker mt-8 text-white/80">{b.kicker}</p>
@@ -82,7 +82,7 @@ export const BranchHero = ({ b }: { b: Branch }) => {
           href="#meer"
           aria-label="Ontdek alles"
           className="scrollBtn absolute bottom-6 right-6 z-10 md:bottom-10 md:right-10"
-          style={(b.key === "verhuizen" ? { "--scroll-bg": "#0F131A", "--scroll-hover": "#0F131A" } : { "--scroll-bg": "#0E3CA0", "--scroll-hover": "#0E3CA0" }) as React.CSSProperties}
+          style={(b.key === "verhuizen" ? { "--scroll-bg": "#E5484D", "--scroll-hover": "#E5484D" } : { "--scroll-bg": "#0E3CA0", "--scroll-hover": "#0E3CA0" }) as React.CSSProperties}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.7 }}

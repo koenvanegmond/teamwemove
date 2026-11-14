@@ -73,7 +73,7 @@ export const SplitHome = () => {
               animate={{ scale: hover === b.key ? 1.06 : 1, opacity: go && go !== b.key ? 0 : 1 }}
             transition={{ duration: 0.6, ease }}
           >
-            <Art kind="verhuizen" className="h-full w-full opacity-90" />
+            <Art kind={b.key} className="h-full w-full opacity-90" />
             </motion.div>
           </div>
 
@@ -98,8 +98,8 @@ export const SplitHome = () => {
                     className="cta"
                     style={
                       (b.key === "verhuizen"
-                        ? { "--cta-fg": "#0E3CA0", "--cta-hover-shadow": "#8FB0FF", "--cta-flash": "#8FB0FF" }
-                        : { "--cta-fg": "#0F131A", "--cta-hover-shadow": "#0E3CA0", "--cta-flash": "#0E3CA0" }) as React.CSSProperties
+                        ? { "--cta-fg": "#0E3CA0", "--cta-hover-shadow": "#E5484D", "--cta-flash": "#E5484D" }
+                        : { "--cta-fg": "#E5484D", "--cta-hover-shadow": "#0E3CA0", "--cta-flash": "#0E3CA0" }) as React.CSSProperties
                     }
                   >
                     <CtaInner label="Ontdek meer" />
@@ -127,6 +127,30 @@ export const SplitHome = () => {
             <Link href="/sjouwhulp" aria-label="Naar sjouwhulp" className="rounded-full p-1.5 transition hover:bg-white/15"><Chevron /></Link>
           </motion.div>
         </div>
+      )}
+
+      {!go && (
+        <a
+          href="#aanbod"
+          aria-label="Scroll naar wat we doen"
+          className="absolute bottom-6 left-1/2 z-20 hidden -translate-x-1/2 flex-col items-center gap-1 text-white md:flex"
+        >
+          <span className="kicker text-white/80">Scroll</span>
+          <motion.svg
+            viewBox="0 0 24 24"
+            className="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            animate={{ y: [0, 5, 0] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+            aria-hidden="true"
+          >
+            <path d="M6 9l6 6 6-6" />
+          </motion.svg>
+        </a>
       )}
 
       {!go && (

@@ -13,15 +13,21 @@ export const Art = ({ kind, className = "" }: { kind: BranchKey; className?: str
     {kind === "verhuizen" ? (
       <LogoMark className="h-full w-full -rotate-6 text-white drop-shadow-[0_30px_40px_rgba(0,0,0,0.25)]" />
     ) : (
-      <svg viewBox="0 0 220 200" className="h-full w-full drop-shadow-[0_30px_40px_rgba(0,0,0,0.2)]" aria-hidden="true">
-        {/* Twee sjouwers die samen een balk dragen */}
-        <g fill="none" stroke="#fff" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="28" y="40" width="168" height="16" rx="4" transform="rotate(-8 112 48)" fill="rgba(255,255,255,0.16)" />
-          <circle cx="80" cy="86" r="10" />
-          <path d="M80 98 77 142M79 106 60 96 64 64M79 106 100 94 97 61M77 142 62 184M77 142 96 181" />
-          <circle cx="152" cy="78" r="10" />
-          <path d="M152 90 154 136M153 98 134 88 136 55M153 98 174 86 170 51M154 136 140 180M154 136 173 177" />
-          <path d="M22 190h178" opacity="0.55" />
+      <svg viewBox="0 0 240 230" className="h-full w-full drop-shadow-[0_30px_40px_rgba(0,0,0,0.25)]" aria-hidden="true">
+        {/* Drie sjouwers die samen een stapel dozen omhoog houden */}
+        <g fill="none" stroke="#fff" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round">
+          <g fill="rgba(255,255,255,0.12)">
+            <rect x="97" y="14" width="46" height="40" rx="5" />
+            <rect x="71" y="58" width="46" height="40" rx="5" />
+            <rect x="123" y="58" width="46" height="40" rx="5" />
+          </g>
+          <path d="M120 14v12M94 58v12M146 58v12" />
+          <circle cx="40" cy="122" r="13" />
+          <path d="M48 140 58 184M52 146 76 102M58 184 44 214M58 184 74 214" />
+          <circle cx="200" cy="122" r="13" />
+          <path d="M192 140 182 184M188 146 164 102M182 184 196 214M182 184 166 214" />
+          <circle cx="120" cy="132" r="13" />
+          <path d="M120 150v40M114 154 98 142 100 106M126 154 142 142 140 106M120 190 108 216M120 190 132 216" />
         </g>
       </svg>
     )}
