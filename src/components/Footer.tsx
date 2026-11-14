@@ -26,9 +26,20 @@ export const Footer = () => (
         </ul>
       </div>
     </div>
-    <div className="container flex flex-col gap-1 border-t border-white/10 py-6 text-xs text-white/40 md:flex-row md:justify-between">
+    <div className="container flex flex-col gap-4 border-t border-white/10 py-6 text-xs text-white/40 md:flex-row md:items-center md:justify-between">
       <p>© {new Date().getFullYear()} WE MOVE · KvK {SITE.kvk}</p>
-      <p>Template-basis: MIT (Aymane Mehdi) · Framer SaaS UI Kit, CC BY 4.0 · Knoppen: Uiverse.io · Font: Supreme (Fontshare)</p>
+      <a
+        href="https://kogi.nl/?utm_source=teamwemove.nl&utm_medium=footer&utm_campaign=madeby"
+        target="_blank"
+        rel="noopener"
+        className="group inline-flex items-center gap-2 self-start rounded-full border border-white/15 px-3.5 py-1.5 text-white/60 transition duration-300 hover:border-white/40 hover:bg-white hover:text-ink md:self-auto"
+      >
+        <span>Website door</span>
+        <span className="font-bold tracking-tight text-white transition group-hover:text-ink">kogi.nl</span>
+        <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M7 17 17 7M9 7h8v8" />
+        </svg>
+      </a>
     </div>
   </footer>
 );

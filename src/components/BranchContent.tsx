@@ -4,6 +4,7 @@ import type { Branch } from "@/lib/branches";
 import { REVIEWS } from "@/lib/reviews";
 import { InView } from "./Reveal";
 import { FaqMenu } from "./FaqMenu";
+import { WorkPhotos } from "./WorkPhotos";
 
 const H2 = ({ children, accent }: { children: React.ReactNode; accent: string }) => (
   <h2 className="display text-4xl text-ink md:text-6xl">
@@ -31,6 +32,8 @@ export const BranchContent = ({ b }: { b: Branch }) => {
           ))}
         </div>
       </section>
+
+      {b.key === "verhuizen" && <WorkPhotos accent={accent} />}
 
       <section className="bg-paper py-20 md:py-28">
         <div className="container">
