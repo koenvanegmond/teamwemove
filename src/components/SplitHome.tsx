@@ -6,7 +6,8 @@ import { motion } from "framer-motion";
 import clsx from "clsx";
 import { BRANCHES, type Branch, type BranchKey } from "@/lib/branches";
 import { Art, Duotone } from "./Art";
-import { Arrow, Chevron, Expand } from "./Icons";
+import { Chevron, Expand } from "./Icons";
+import { CtaInner } from "./Cta";
 import { RevealLines, FadeUp } from "./Reveal";
 
 const ease = [0.76, 0, 0.24, 1] as const;
@@ -83,8 +84,17 @@ export const SplitHome = () => {
               />
               <FadeUp delay={0.45 + idx * 0.1}>
                 <p className="mt-4 hidden max-w-[340px] text-sm leading-relaxed text-white/85 sm:block">{b.short}</p>
-                <span className={clsx("pill mt-6 border-white/80 text-white group-hover:bg-white", b.key === "verhuizen" ? "group-hover:text-brand" : "group-hover:text-sun-dark")}>
-                  Ontdek meer <Arrow />
+                <span className="mt-7 inline-flex pl-1">
+                  <span
+                    className="cta"
+                    style={
+                      (b.key === "verhuizen"
+                        ? { "--cta-fg": "#0E3CA0", "--cta-hover-shadow": "#FF9F0A", "--cta-flash": "#FF9F0A" }
+                        : { "--cta-fg": "#E68A00", "--cta-hover-shadow": "#0E3CA0", "--cta-flash": "#0E3CA0" }) as React.CSSProperties
+                    }
+                  >
+                    <CtaInner label="Ontdek meer" />
+                  </span>
                 </span>
               </FadeUp>
             </div>

@@ -7,7 +7,7 @@ import clsx from "clsx";
 import { other, type Branch } from "@/lib/branches";
 import { whatsappLink } from "@/lib/site";
 import { Art, Duotone } from "./Art";
-import { Arrow, ArrowLeft, Chevron, Expand, Whatsapp } from "./Icons";
+import { ArrowLeft, Chevron, Expand, Whatsapp } from "./Icons";
 import { FadeUp, RevealLines } from "./Reveal";
 
 const ease = [0.76, 0, 0.24, 1] as const;
@@ -16,6 +16,8 @@ export const BranchHero = ({ b }: { b: Branch }) => {
   const router = useRouter();
   const o = other(b.key);
   const [switching, setSwitching] = useState(false);
+  // Hoverkleur van knoppen = kleur van de andere tak, zodat hij afsteekt.
+  const hoverCls = b.key === "verhuizen" ? "btn-sun" : "";
 
   useEffect(() => {
     router.prefetch(o.href);
@@ -58,20 +60,14 @@ export const BranchHero = ({ b }: { b: Branch }) => {
                 ))}
               </ul>
               <div className="mt-8 flex flex-wrap items-center gap-3">
-                <Link
-                  href={`/contact?type=${b.key}`}
-                  className={clsx(
-                    "pill border-white bg-white font-semibold hover:gap-5",
-                    b.key === "verhuizen" ? "text-brand" : "text-sun-dark"
-                  )}
-                >
-                  {b.cta} <Arrow />
+                <Link href={`/contact?type=${b.key}`} className={clsx("btn", hoverCls)}>
+                  {b.cta}
                 </Link>
                 <a
                   href={whatsappLink(b.whatsapp)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="pill border-white/70 text-white hover:bg-white/15"
+                  className={clsx("btn btn-ghost", hoverCls)}
                 >
                   <Whatsapp className="h-4 w-4" /> WhatsApp
                 </a>

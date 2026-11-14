@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
-import { Arrow } from "@/components/Icons";
 import { RevealLines, InView } from "@/components/Reveal";
 import { SITE } from "@/lib/site";
 
@@ -32,8 +31,8 @@ export default function OverOns() {
                 </li>
               ))}
             </ul>
-            <Link href="/contact" className="pill mt-8 border-brand bg-brand font-semibold text-white hover:gap-5">
-              Neem contact op <Arrow />
+            <Link href="/contact" className="btn mt-8">
+              Neem contact op
             </Link>
           </InView>
         </div>

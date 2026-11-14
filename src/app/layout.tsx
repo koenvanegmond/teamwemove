@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Jost } from "next/font/google";
+import localFont from "next/font/local";
 import clsx from "clsx";
 import { Analytics } from "@vercel/analytics/next";
 import { MotionConfig } from "framer-motion";
@@ -7,7 +7,15 @@ import "./globals.css";
 import { TopBar } from "@/components/TopBar";
 import { SITE } from "@/lib/site";
 
-const jost = Jost({ subsets: ["latin"], style: ["normal", "italic"], variable: "--font-jost" });
+// Supreme (Fontshare, ITF Free Font License): zelf gehost voor deze website.
+const supreme = localFont({
+  src: [
+    { path: "./fonts/Supreme-Variable.woff2", weight: "100 800", style: "normal" },
+    { path: "./fonts/Supreme-VariableItalic.woff2", weight: "100 800", style: "italic" },
+  ],
+  variable: "--font-supreme",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -19,7 +27,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="nl" className={jost.variable}>
+    <html lang="nl" className={supreme.variable}>
       <body className={clsx("bg-white font-sans text-ink antialiased")}>
         <MotionConfig reducedMotion="user">
           <TopBar />

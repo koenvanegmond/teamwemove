@@ -8,12 +8,120 @@ details > summary::-webkit-details-marker { display: none; }
 
 @layer components {
   .display {
-    @apply font-black italic uppercase leading-[0.92] tracking-tight;
+    @apply font-extrabold italic uppercase leading-[0.92] tracking-tight;
   }
   .kicker {
     @apply text-[11px] font-medium italic uppercase tracking-[0.25em];
   }
-  .pill {
-    @apply inline-flex items-center gap-3 rounded-full border px-6 py-2.5 text-sm font-medium transition duration-300;
-  }
+}
+
+/* Knop voor alle andere acties (gebaseerd op Uiverse.io, barisdogansutcu).
+   Hoverkleur per plek instelbaar met --btn-hover en --btn-glow. */
+.btn {
+  --btn-hover: #0e3ca0;
+  --btn-glow: rgba(14, 60, 160, 0.55);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 17px 40px;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 0;
+  background-color: #fff;
+  color: #0b1226;
+  box-shadow: rgb(0 0 0 / 8%) 0 0 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  transition: all 0.5s ease;
+}
+.btn:hover,
+.btn:focus-visible {
+  letter-spacing: 3px;
+  background-color: var(--btn-hover);
+  color: #fff;
+  box-shadow: var(--btn-glow) 0px 7px 29px 0px;
+  outline: none;
+}
+.btn:active {
+  letter-spacing: 3px;
+  background-color: var(--btn-hover);
+  color: #fff;
+  box-shadow: var(--btn-glow) 0px 0px 0px 0px;
+  transform: translateY(10px);
+  transition: 100ms;
+}
+.btn-ghost {
+  background-color: rgb(255 255 255 / 0.14);
+  color: #fff;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.6);
+}
+.btn-sun { --btn-hover: #ff9f0a; --btn-glow: rgba(255, 159, 10, 0.6); }
+.btn-ink { --btn-hover: #0b1226; --btn-glow: rgba(11, 18, 38, 0.45); }
+@media (max-width: 479px) {
+  .btn { padding: 15px 28px; font-size: 13px; }
+}
+
+/* Hoofdknop op de homepage (gebaseerd op Uiverse.io, mobinkakei).
+   --cta-bg, --cta-fg, --cta-hover-shadow en --cta-flash per paneel. */
+.cta {
+  --cta-bg: #fff;
+  --cta-fg: #0e3ca0;
+  --cta-hover-shadow: #ff9f0a;
+  --cta-flash: #ff9f0a;
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 33px;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: 700;
+  font-style: italic;
+  text-transform: uppercase;
+  color: var(--cta-fg);
+  background: var(--cta-bg);
+  transition: 1s;
+  box-shadow: 6px 6px 0 #0b1226;
+  transform: skewX(-15deg);
+  border: none;
+  cursor: pointer;
+}
+.cta:focus { outline: none; }
+.cta:hover,
+.group:hover .cta,
+.cta:focus-visible {
+  transition: 0.5s;
+  box-shadow: 10px 10px 0 var(--cta-hover-shadow);
+}
+.cta .cta-label { transform: skewX(15deg); }
+.cta .second {
+  width: 20px;
+  margin-left: 30px;
+  position: relative;
+  top: 2px;
+  transition: 0.5s;
+  margin-right: 0px;
+}
+.cta:hover .second,
+.group:hover .cta .second { margin-right: 45px; }
+.cta svg path { fill: var(--cta-fg); }
+.cta .one { transition: 0.4s; transform: translateX(-60%); }
+.cta .two { transition: 0.5s; transform: translateX(-30%); }
+.cta:hover .three, .group:hover .cta .three { animation: cta_color 1s infinite 0.2s; }
+.cta:hover .one, .group:hover .cta .one { transform: translateX(0%); animation: cta_color 1s infinite 0.6s; }
+.cta:hover .two, .group:hover .cta .two { transform: translateX(0%); animation: cta_color 1s infinite 0.4s; }
+@keyframes cta_color {
+  0% { fill: var(--cta-fg); }
+  50% { fill: var(--cta-flash); }
+  100% { fill: var(--cta-fg); }
+}
+@media (max-width: 767px) {
+  .cta { font-size: 18px; padding: 9px 24px; }
+  .cta .second { margin-left: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cta *, .btn { animation: none !important; transition: none !important; }
 }

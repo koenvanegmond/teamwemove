@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import clsx from "clsx";
 import { whatsappLink, SITE } from "@/lib/site";
 import type { BranchKey } from "@/lib/branches";
-import { Arrow, Close, Whatsapp } from "./Icons";
+import { Close, Whatsapp } from "./Icons";
 
 type Field = { name: string; label: string; type?: "text" | "tel" | "date" | "select" | "textarea"; options?: string[]; placeholder?: string; required?: boolean };
 
@@ -36,7 +36,6 @@ const input = "w-full border-0 border-b border-transparent bg-transparent py-1 t
 export const QuoteForm = ({ defaultKind = "verhuizen" }: { defaultKind?: BranchKey }) => {
   const [kind, setKind] = useState<BranchKey>(defaultKind);
   const accent = kind === "verhuizen" ? "text-brand" : "text-sun-dark";
-  const bg = kind === "verhuizen" ? "bg-brand hover:bg-brand-dark" : "bg-sun hover:bg-sun-dark";
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -116,8 +115,8 @@ export const QuoteForm = ({ defaultKind = "verhuizen" }: { defaultKind?: BranchK
             </p>
             <div className="flex items-center gap-6">
               <p className="text-sm uppercase text-ink">Gratis <span className="font-bold">offerte</span></p>
-              <button type="submit" className={clsx("pill border-transparent font-semibold text-white shadow-lg shadow-black/10 hover:gap-5", bg)}>
-                <Whatsapp className="h-4 w-4" /> Versturen <Arrow />
+              <button type="submit" className={clsx("btn !shadow-[0_4px_20px_rgba(0,0,0,0.12)] hover:!shadow-[0_7px_29px_var(--btn-glow)]", kind === "sjouwhulp" && "btn-sun")}>
+                <Whatsapp className="h-4 w-4" /> Versturen
               </button>
             </div>
           </div>

@@ -2,7 +2,6 @@ import Link from "next/link";
 import clsx from "clsx";
 import type { Branch } from "@/lib/branches";
 import { REVIEWS } from "@/lib/reviews";
-import { Arrow } from "./Icons";
 import { InView } from "./Reveal";
 
 const H2 = ({ children, accent }: { children: React.ReactNode; accent: string }) => (
@@ -96,9 +95,9 @@ export const BranchContent = ({ b }: { b: Branch }) => {
           <h2 className="display text-4xl md:text-6xl">Binnen 24 uur<br />een offerte.</h2>
           <Link
             href={`/contact?type=${b.key}`}
-            className={clsx("pill border-white bg-white font-semibold hover:gap-5", b.key === "verhuizen" ? "text-brand" : "text-sun-dark")}
+            className={clsx("btn", b.key === "verhuizen" ? "btn-sun" : "")}
           >
-            {b.cta} <Arrow />
+            {b.cta}
           </Link>
         </div>
       </section>

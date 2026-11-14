@@ -12,7 +12,7 @@ const config: Config = {
         paper: "#ECEDEF",
       },
       fontFamily: {
-        sans: ["var(--font-jost)", "system-ui", "sans-serif"],
+        sans: ["var(--font-supreme)", "system-ui", "sans-serif"],
       },
       container: { center: true, padding: { DEFAULT: "20px", lg: "56px" } },
     },
