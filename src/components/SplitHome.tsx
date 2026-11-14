@@ -108,10 +108,6 @@ export const SplitHome = () => {
               </FadeUp>
             </div>
           </motion.div>
-
-          <span className="absolute bottom-6 left-6 z-10 text-xs font-medium tracking-[0.2em] text-white/70 md:left-[clamp(28px,5vw,80px)]">
-            {b.number}
-          </span>
         </motion.div>
       ))}
 
