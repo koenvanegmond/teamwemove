@@ -26,8 +26,8 @@ export const ORG_JSONLD = {
       description:
         "Verhuisbedrijf voor particulieren en bedrijven: verhuizen, ontruimen, montage, inpakken en zware of kwetsbare spullen. Ook sjouwhulp en bar- en bedieningspersoneel voor bedrijven en events.",
       founder: [
-        { "@type": "Person", name: "Koen" },
-        { "@type": "Person", name: "Benoît" },
+        { "@type": "Person", name: "Koen van Egmond" },
+        { "@type": "Person", name: "Benoit Weizenbach" },
       ],
       areaServed: [
         { "@type": "City", name: "Katwijk" },

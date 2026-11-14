@@ -1,13 +1,13 @@
 "use client";
-import Link from "next/link";
+
 import { useState, type FormEvent } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import clsx from "clsx";
 import { whatsappLink, SITE } from "@/lib/site";
 import type { BranchKey } from "@/lib/branches";
-import { Close, Phone, Whatsapp } from "./Icons";
+import { Phone, Whatsapp } from "./Icons";
 import { Socials } from "./Socials";
-import { Logo } from "./Logo";
 
 type Field = { name: string; label: string; type?: "text" | "tel" | "date" | "select" | "textarea"; options?: string[]; placeholder?: string; required?: boolean; wide?: boolean };
 
@@ -49,27 +49,18 @@ export const QuoteForm = ({ defaultKind = "verhuizen" }: { defaultKind?: BranchK
 
   return (
     <div className="relative">
-      <div className={clsx("absolute inset-x-0 top-0 h-2 transition-colors duration-500", kind === "verhuizen" ? "bg-brand" : "bg-coral")} />
-      <div className="container pb-20 pt-12 md:pt-14">
-        <div className="flex items-start justify-between">
-          <Link href="/" aria-label="Naar de homepage" className="transition hover:opacity-70">
-            <Logo iconClass="text-brand" wordClass="text-ink" />
-          </Link>
-          <Link href="/" className="group flex items-center gap-2 text-xs text-ink/60 hover:text-ink">
-            Sluiten <span className="rounded-full p-2 transition group-hover:rotate-90 group-hover:bg-paper"><Close className="h-4 w-4" /></span>
-          </Link>
-        </div>
-
+      <div className="container pb-24 pt-32 md:pt-40">
+        <p className={clsx("kicker transition-colors", kind === "verhuizen" ? "text-brand" : "text-coral")}>Offerte</p>
         <motion.h1
-          className="mt-6 text-center text-3xl uppercase tracking-tight text-ink md:text-5xl"
+          className="display mt-3 text-5xl text-ink md:text-7xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          Jouw <span className="font-extrabold italic">aanvraag</span>
+          Jouw aanvraag<span className={kind === "verhuizen" ? "text-brand" : "text-coral"}>.</span>
         </motion.h1>
 
-        <div className="mx-auto mt-8 flex w-fit flex-wrap justify-center gap-4">
+        <div className="mt-10 flex flex-wrap gap-4">
           {(["verhuizen", "sjouwhulp"] as BranchKey[]).map((k) => (
             <button
               key={k}
@@ -83,10 +74,11 @@ export const QuoteForm = ({ defaultKind = "verhuizen" }: { defaultKind?: BranchK
           ))}
         </div>
 
+        <div className="mt-8 grid items-start gap-10 lg:grid-cols-[minmax(0,48rem)_1fr] lg:gap-14">
         <motion.form
           key={kind}
           onSubmit={onSubmit}
-          className={clsx("nb-form mx-auto mt-10 max-w-3xl", kind === "sjouwhulp" && "nb-form--sjouwhulp")}
+          className={clsx("nb-form", kind === "sjouwhulp" && "nb-form--sjouwhulp")}
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
@@ -131,9 +123,15 @@ export const QuoteForm = ({ defaultKind = "verhuizen" }: { defaultKind?: BranchK
           <p className="text-xs text-[color:var(--font-color-sub)]">Je aanvraag opent in WhatsApp.</p>
         </motion.form>
 
-        <div className="mx-auto mt-14 flex max-w-3xl flex-col items-center gap-4">
-          <p className="kicker text-ink/50">Volg ons</p>
-          <Socials />
+          <aside className="flex flex-col gap-8 lg:sticky lg:top-28">
+            <div className="relative hidden aspect-[4/5] overflow-hidden rounded-[5px] border-2 border-ink shadow-[4px_4px_0_#0b1226] lg:block">
+              <Image src="/images/verhuisdoos.webp" alt="WE MOVE-verhuizer met een verhuisdoos" fill sizes="30vw" className="object-cover" />
+            </div>
+            <div className="flex flex-col items-start gap-4">
+              <p className="kicker text-ink/50">Volg ons</p>
+              <Socials />
+            </div>
+          </aside>
         </div>
       </div>
     </div>

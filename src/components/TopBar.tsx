@@ -35,7 +35,6 @@ export const TopBar = () => {
   const onColor = COLOR_PAGES.includes(path) && !scrolled;
   const hasStrip = (path === "/verhuizen" || path === "/sjouwhulp") && !scrolled;
 
-  if (path === "/contact") return null;
 
   return (
     <>
