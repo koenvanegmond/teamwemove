@@ -2,13 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
+details > summary { list-style: none; }
+details > summary::-webkit-details-marker { display: none; }
 
-details > summary {
-  list-style: none;
-}
-details > summary::-webkit-details-marker {
-  display: none;
+@layer components {
+  .display {
+    @apply font-black italic uppercase leading-[0.92] tracking-tight;
+  }
+  .kicker {
+    @apply text-[11px] font-medium italic uppercase tracking-[0.25em];
+  }
+  .pill {
+    @apply inline-flex items-center gap-3 rounded-full border px-6 py-2.5 text-sm font-medium transition duration-300;
+  }
 }

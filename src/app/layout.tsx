@@ -1,38 +1,30 @@
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
+import { Jost } from "next/font/google";
 import clsx from "clsx";
 import { Analytics } from "@vercel/analytics/next";
+import { MotionConfig } from "framer-motion";
 import "./globals.css";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { TopBar } from "@/components/TopBar";
 import { SITE } from "@/lib/site";
 
-const dmSans = DM_Sans({ subsets: ["latin"] });
+const jost = Jost({ subsets: ["latin"], style: ["normal", "italic"], variable: "--font-jost" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: {
-    default: "WE MOVE | Verhuizen en sjouwhulp in Den Haag",
-    template: "%s | WE MOVE",
-  },
+  title: { default: "WE MOVE | Verhuizen en sjouwhulp in Den Haag", template: "%s | WE MOVE" },
   description:
-    "WE MOVE is het verhuisbedrijf voor Den Haag en omstreken, met 6+ jaar ervaring. Ook sjouwhulp en hospitality-personeel voor evenementen. Vraag een vrijblijvende offerte aan.",
-  openGraph: {
-    type: "website",
-    locale: "nl_NL",
-    siteName: "WE MOVE",
-  },
+    "WE MOVE: verhuisbedrijf in Den Haag met 6+ jaar ervaring. Ook sjouwhulp en hospitality-personeel voor evenementen. Offerte binnen 24 uur.",
+  openGraph: { type: "website", locale: "nl_NL", siteName: "WE MOVE" },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="nl">
-      <body className={clsx(dmSans.className, "bg-white text-ink antialiased")}>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+    <html lang="nl" className={jost.variable}>
+      <body className={clsx("bg-white font-sans text-ink antialiased")}>
+        <MotionConfig reducedMotion="user">
+          <TopBar />
+          <main>{children}</main>
+        </MotionConfig>
         <Analytics />
       </body>
     </html>
