@@ -9,6 +9,7 @@ import { whatsappLink } from "@/lib/site";
 import { Art, Duotone } from "./Art";
 import { Chevron, Whatsapp } from "./Icons";
 import { BackButton } from "./BackButton";
+import { useSplashDone } from "./Splash";
 import { FadeUp, RevealLines } from "./Reveal";
 
 const ease = [0.76, 0, 0.24, 1] as const;
@@ -17,6 +18,7 @@ export const BranchHero = ({ b }: { b: Branch }) => {
   const router = useRouter();
   const o = other(b.key);
   const [switching, setSwitching] = useState(false);
+  const ready = useSplashDone();
   // Hoverkleur van knoppen = kleur van de andere tak, zodat hij afsteekt.
   const hoverCls = b.key === "verhuizen" ? "btn-sun" : "";
 
@@ -32,7 +34,7 @@ export const BranchHero = ({ b }: { b: Branch }) => {
         <motion.div
           className="absolute right-[-8%] top-[9%] h-[26%] w-[50%] opacity-50 md:opacity-100 md:right-[4%] md:top-1/2 md:h-[66vh] md:w-[66vh] md:-translate-y-1/2"
           initial={{ opacity: 0, x: 60, rotate: 6 }}
-          animate={{ opacity: 1, x: 0, rotate: 0 }}
+          animate={ready ? { opacity: 1, x: 0, rotate: 0 } : { opacity: 0, x: 60, rotate: 6 }}
           transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         >
           <Art kind={b.key} className="h-full w-full" />

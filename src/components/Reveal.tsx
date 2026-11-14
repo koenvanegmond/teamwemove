@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { useSplashDone } from "./Splash";
 
 // Koptekst die regel voor regel omhoog schuift uit een masker.
 export const RevealLines = ({
@@ -14,6 +15,7 @@ export const RevealLines = ({
   as?: "h1" | "h2";
 }) => {
   const Tag = as;
+  const ready = useSplashDone();
   return (
     <Tag className={className}>
       {lines.map((l, i) => (
@@ -21,7 +23,7 @@ export const RevealLines = ({
           <motion.span
             className="block"
             initial={{ y: "110%" }}
-            animate={{ y: 0 }}
+            animate={ready ? { y: 0 } : { y: "110%" }}
             transition={{ duration: 0.8, delay: delay + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
           >
             {l}
@@ -40,16 +42,19 @@ export const FadeUp = ({
   children: React.ReactNode;
   delay?: number;
   className?: string;
-}) => (
-  <motion.div
-    className={className}
-    initial={{ opacity: 0, y: 16 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-  >
-    {children}
-  </motion.div>
-);
+}) => {
+  const ready = useSplashDone();
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: 16 }}
+      animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 export const InView = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
   <motion.div

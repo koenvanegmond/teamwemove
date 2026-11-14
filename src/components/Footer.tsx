@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Logo } from "./Logo";
+import { LogoFull } from "./Logo";
 import { SITE } from "@/lib/site";
 import { Socials } from "./Socials";
 
@@ -7,8 +7,8 @@ export const Footer = () => (
   <footer className="bg-ink text-white/70">
     <div className="container flex flex-col gap-10 py-14 md:flex-row md:justify-between">
       <div>
-        <Logo className="text-white" />
-        <p className="mt-3 max-w-xs text-sm">Verhuizen en sjouwhulp in Den Haag. {SITE.owners}.</p>
+        <LogoFull className="h-14 w-auto text-white" />
+        <p className="mt-3 max-w-xs text-sm">Verhuizen en sjouwhulp in Den Haag.</p>
         <div className="mt-6"><Socials variant="dark" /></div>
       </div>
       <div className="grid grid-cols-2 gap-x-14 text-sm">

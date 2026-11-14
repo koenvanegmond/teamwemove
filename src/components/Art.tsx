@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import type { BranchKey } from "@/lib/branches";
+import { LogoMark } from "./Logo";
 
 // Grote illustratie per tak. Vervang later door een uitgeknipte foto (PNG) als je die hebt.
 export const Art = ({ kind, className = "" }: { kind: BranchKey; className?: string }) => (
@@ -10,13 +11,7 @@ export const Art = ({ kind, className = "" }: { kind: BranchKey; className?: str
     transition={{ duration: 4, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
   >
     {kind === "verhuizen" ? (
-      <svg viewBox="0 0 200 200" className="h-full w-full drop-shadow-[0_30px_40px_rgba(0,0,0,0.25)]" aria-hidden="true">
-        <g transform="rotate(-8 100 100)">
-          <path d="M100 30l62 22v84l-62 26-62-26V52l62-22z" fill="rgba(255,255,255,0.14)" stroke="#fff" strokeWidth="6" strokeLinejoin="round" />
-          <path d="M38 52l62 22 62-22M100 74v88" fill="none" stroke="#fff" strokeWidth="6" strokeLinejoin="round" strokeLinecap="round" />
-          <path d="M69 41l62 22v26" fill="none" stroke="#fff" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" opacity="0.7" />
-        </g>
-      </svg>
+      <LogoMark className="h-full w-full -rotate-6 text-white drop-shadow-[0_30px_40px_rgba(0,0,0,0.25)]" />
     ) : (
       <svg viewBox="0 0 200 200" className="h-full w-full drop-shadow-[0_30px_40px_rgba(0,0,0,0.2)]" aria-hidden="true">
         <g fill="rgba(255,255,255,0.16)" stroke="#fff" strokeWidth="6" strokeLinejoin="round">
