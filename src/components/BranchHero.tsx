@@ -7,7 +7,8 @@ import clsx from "clsx";
 import { other, type Branch } from "@/lib/branches";
 import { whatsappLink } from "@/lib/site";
 import { Art, Duotone } from "./Art";
-import { ArrowLeft, Chevron, Expand, Whatsapp } from "./Icons";
+import { Chevron, Expand, Whatsapp } from "./Icons";
+import { BackButton } from "./BackButton";
 import { FadeUp, RevealLines } from "./Reveal";
 
 const ease = [0.76, 0, 0.24, 1] as const;
@@ -40,10 +41,7 @@ export const BranchHero = ({ b }: { b: Branch }) => {
         <div className="relative z-10 flex w-full flex-col justify-end px-6 pb-10 pt-24 md:justify-center md:px-[clamp(28px,7vw,120px)] md:pb-0">
           <div className="max-w-[560px]">
             <FadeUp>
-              <Link href="/" className="inline-flex flex-col gap-1 text-sm font-medium text-white/90 transition hover:-translate-x-1">
-                Terug
-                <ArrowLeft className="h-4 w-6" />
-              </Link>
+              <BackButton tone={b.key === "verhuizen" ? "brand" : "sun"} />
             </FadeUp>
             <FadeUp delay={0.1}>
               <p className="kicker mt-8 text-white/80">{b.kicker}</p>

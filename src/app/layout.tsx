@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { MotionConfig } from "framer-motion";
 import "./globals.css";
 import { TopBar } from "@/components/TopBar";
+import { Splash } from "@/components/Splash";
 import { SITE } from "@/lib/site";
 
 // Supreme (Fontshare, ITF Free Font License): zelf gehost voor deze website.
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="nl" className={supreme.variable}>
       <body className={clsx("bg-white font-sans text-ink antialiased")}>
         <MotionConfig reducedMotion="user">
+          <Splash />
           <TopBar />
           <main>{children}</main>
         </MotionConfig>
