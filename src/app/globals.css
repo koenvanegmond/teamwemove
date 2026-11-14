@@ -309,3 +309,60 @@ textarea.nb-input { height: auto; min-height: 88px; padding-top: 10px; resize: v
   bottom: unset;
   transition-duration: 0.3s;
 }
+
+/* Veelgestelde vragen in menustijl (gebaseerd op Uiverse.io, gharsh11032000).
+   Kleur per tak via --faq. */
+.faq { --faq: #0e3ca0; display: flex; flex-direction: column; gap: 12px; }
+.faq-item { position: relative; }
+.faq-link {
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 24px;
+  border-radius: 16px;
+  border: 1px solid #d5d9e0;
+  overflow: hidden;
+  isolation: isolate;
+  text-align: left;
+  font-size: 17px;
+  font-weight: 600;
+  color: #0b1226;
+  background: #fff;
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.faq-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--faq);
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.faq-link svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  fill: currentColor;
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.faq-link:hover,
+.faq-link:focus-visible,
+.faq-item.is-open .faq-link { color: #fff; border-color: var(--faq); outline: none; }
+.faq-link:hover::after,
+.faq-link:focus-visible::after,
+.faq-item.is-open .faq-link::after { transform: scaleX(1); transform-origin: right; }
+.faq-item.is-open .faq-link { border-radius: 16px 16px 0 0; }
+.faq-item.is-open .faq-link svg { transform: rotate(-180deg); }
+.faq-panel {
+  overflow: hidden;
+  border: 1px solid var(--faq);
+  border-top: 0;
+  border-radius: 0 0 16px 16px;
+  background: #fff;
+}
+.faq-panel p { padding: 16px 24px 20px; color: #3b4356; line-height: 1.6; }

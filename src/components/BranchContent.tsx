@@ -3,6 +3,7 @@ import clsx from "clsx";
 import type { Branch } from "@/lib/branches";
 import { REVIEWS } from "@/lib/reviews";
 import { InView } from "./Reveal";
+import { FaqMenu } from "./FaqMenu";
 
 const H2 = ({ children, accent }: { children: React.ReactNode; accent: string }) => (
   <h2 className="display text-4xl text-ink md:text-6xl">
@@ -76,16 +77,8 @@ export const BranchContent = ({ b }: { b: Branch }) => {
         </div>
         <div>
           <InView><p className={clsx("kicker", accent)}>Vragen</p></InView>
-          <div className="mt-4 divide-y divide-ink/10 border-y border-ink/10">
-            {b.faq.map((f) => (
-              <details key={f.q} className="group py-5">
-                <summary className="flex cursor-pointer items-center justify-between gap-4 text-lg font-semibold text-ink">
-                  {f.q}
-                  <span className={clsx("text-2xl leading-none transition duration-300 group-open:rotate-45", accent)}>+</span>
-                </summary>
-                <p className="mt-2 text-ink/65">{f.a}</p>
-              </details>
-            ))}
+          <div className="mt-6">
+            <FaqMenu items={b.faq} color={b.color} />
           </div>
         </div>
       </section>
