@@ -1,37 +1,63 @@
-import ArrowRight from "@/assets/arrow-right.svg";
-import Logo from "@/assets/logosaas.png";
-import Image from "next/image";
-import MenuIcon from "@/assets/menu.svg";
+"use client";
+import Link from "next/link";
+import { useState } from "react";
+import { Logo } from "./Logo";
+import { ButtonLink } from "./Button";
+
+const NAV = [
+  { href: "/verhuizen", label: "Verhuizen" },
+  { href: "/sjouwhulp", label: "Sjouwhulp & Hospitality" },
+  { href: "/over-ons", label: "Over ons" },
+  { href: "/contact", label: "Contact" },
+];
+
 export const Header = () => {
+  const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 backdrop-blur-sm z-20">
-      <div className="flex justify-center items-center py-3 bg-black text-white text-sm gap-3">
-        <p className="text-white/60 hidden md:block">
-          Introducing a completely redesigned interface.
-        </p>
-        <div className="inline-flex gap-1 items-center">
-          <p>Explore the demo</p>
-          <ArrowRight className="h-4 w-4 inline-flex justify-center items-center" />
-        </div>
+    <header className="sticky top-0 z-30 border-b border-ink/5 bg-white/85 backdrop-blur">
+      <div className="container flex items-center justify-between py-4">
+        <Link href="/" aria-label="WE MOVE, naar de startpagina" onClick={() => setOpen(false)}>
+          <Logo />
+        </Link>
+        <nav className="hidden items-center gap-7 text-ink/70 md:flex">
+          {NAV.map((n) => (
+            <Link key={n.href} href={n.href} className="transition hover:text-brand">
+              {n.label}
+            </Link>
+          ))}
+          <ButtonLink href="/contact" className="!py-2">
+            Offerte aanvragen
+          </ButtonLink>
+        </nav>
+        <button
+          type="button"
+          className="rounded-lg p-2 text-ink md:hidden"
+          aria-label={open ? "Sluit menu" : "Open menu"}
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+        >
+          <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+            {open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+          </svg>
+        </button>
       </div>
-      <div className="py-5">
-        <div className="container">
-          <div className="flex items-center justify-between">
-            <Image src={Logo} alt="logo" height={40} width={40} />
-            <MenuIcon className="h-5 w-5 md:hidden" />
-            <nav className="hidden md:flex gap-6 text-black/60 items-center">
-              <a href="#">About</a>
-              <a href="#">Features</a>
-              <a href="#">Customers</a>
-              <a href="#">Updates</a>
-              <a href="#">Help</a>
-              <button className="bg-black text-white px-4 py-2 rounded-lg font-medium inline-flex align-items justify-center tracking-tight">
-                Get for free
-              </button>
-            </nav>
-          </div>
-        </div>
-      </div>
+      {open && (
+        <nav className="container flex flex-col gap-1 pb-5 md:hidden">
+          {NAV.map((n) => (
+            <Link
+              key={n.href}
+              href={n.href}
+              onClick={() => setOpen(false)}
+              className="rounded-lg px-2 py-3 text-lg text-ink/80 hover:bg-brand-soft"
+            >
+              {n.label}
+            </Link>
+          ))}
+          <ButtonLink href="/contact" className="mt-2">
+            Offerte aanvragen
+          </ButtonLink>
+        </nav>
+      )}
     </header>
   );
 };
