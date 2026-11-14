@@ -5,37 +5,34 @@ import { motion } from "framer-motion";
 import clsx from "clsx";
 import { whatsappLink, SITE } from "@/lib/site";
 import type { BranchKey } from "@/lib/branches";
-import { Close, Whatsapp } from "./Icons";
+import { Close, Phone, Whatsapp } from "./Icons";
 
-type Field = { name: string; label: string; type?: "text" | "tel" | "date" | "select" | "textarea"; options?: string[]; placeholder?: string; required?: boolean };
+type Field = { name: string; label: string; type?: "text" | "tel" | "date" | "select" | "textarea"; options?: string[]; placeholder?: string; required?: boolean; wide?: boolean };
 
 const FIELDS: Record<BranchKey, Field[]> = {
   verhuizen: [
-    { name: "naam", label: "Naam", required: true },
-    { name: "telefoon", label: "Telefoon", type: "tel" },
-    { name: "soort", label: "Soort", type: "select", options: ["Particulier verhuizen", "Bedrijfsverhuizing", "Ontruimen", "Montage", "Inpakken", "Anders"] },
+    { name: "naam", label: "Naam", required: true, placeholder: "Je naam" },
+    { name: "telefoon", label: "Telefoon", type: "tel", placeholder: "06 …" },
+    { name: "soort", label: "Soort verhuizing", type: "select", options: ["Particulier verhuizen", "Bedrijfsverhuizing", "Ontruimen", "Montage", "Inpakken", "Anders"] },
+    { name: "datum", label: "Gewenste datum", type: "date" },
     { name: "van", label: "Van", required: true, placeholder: "Huidig adres of plaats" },
     { name: "naar", label: "Naar", placeholder: "Nieuw adres of plaats" },
-    { name: "datum", label: "Datum", type: "date" },
-    { name: "opmerking", label: "Opmerking", type: "textarea", placeholder: "Verdieping, lift, grote meubels…" },
+    { name: "opmerking", label: "Opmerking", type: "textarea", placeholder: "Verdieping, lift, grote meubels…", wide: true },
   ],
   sjouwhulp: [
-    { name: "naam", label: "Naam", required: true },
-    { name: "organisatie", label: "Organisatie" },
-    { name: "telefoon", label: "Telefoon", type: "tel" },
-    { name: "soort", label: "Wat", type: "select", options: ["Opbouw", "Afbouw", "Laden en lossen", "Logistiek", "Projectinrichting", "Hospitality-personeel", "Anders"] },
-    { name: "locatie", label: "Locatie", required: true },
+    { name: "naam", label: "Naam", required: true, placeholder: "Je naam" },
+    { name: "organisatie", label: "Organisatie of evenement", placeholder: "Naam" },
+    { name: "telefoon", label: "Telefoon", type: "tel", placeholder: "06 …" },
+    { name: "soort", label: "Wat heb je nodig", type: "select", options: ["Opbouw", "Afbouw", "Laden en lossen", "Logistiek", "Projectinrichting", "Hospitality-personeel", "Anders"] },
+    { name: "locatie", label: "Locatie", required: true, placeholder: "Adres of plaats" },
     { name: "datum", label: "Datum", type: "date" },
-    { name: "aantal", label: "Aantal mensen" },
-    { name: "opmerking", label: "Opmerking", type: "textarea" },
+    { name: "aantal", label: "Aantal mensen", placeholder: "Bijvoorbeeld 4" },
+    { name: "opmerking", label: "Opmerking", type: "textarea", placeholder: "Tijden, toegang, bijzonderheden…", wide: true },
   ],
 };
 
-const input = "w-full border-0 border-b border-transparent bg-transparent py-1 text-ink outline-none placeholder:text-ink/30 focus:border-current";
-
 export const QuoteForm = ({ defaultKind = "verhuizen" }: { defaultKind?: BranchKey }) => {
   const [kind, setKind] = useState<BranchKey>(defaultKind);
-  const accent = kind === "verhuizen" ? "text-brand" : "text-sun-dark";
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -65,21 +62,19 @@ export const QuoteForm = ({ defaultKind = "verhuizen" }: { defaultKind?: BranchK
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          Jouw <span className="font-bold">aanvraag</span>
+          Jouw <span className="font-extrabold italic">aanvraag</span>
         </motion.h1>
 
-        <div className="mx-auto mt-8 flex w-fit gap-1 rounded-full bg-paper p-1">
+        <div className="mx-auto mt-8 flex w-fit flex-wrap justify-center gap-4">
           {(["verhuizen", "sjouwhulp"] as BranchKey[]).map((k) => (
             <button
               key={k}
               type="button"
+              aria-pressed={kind === k}
               onClick={() => setKind(k)}
-              className={clsx("relative rounded-full px-5 py-2 text-sm font-medium transition", kind === k ? "text-white" : "text-ink/60 hover:text-ink")}
+              className={clsx("nb-tab", k === "verhuizen" ? "is-verhuizen" : "is-sjouwhulp")}
             >
-              {kind === k && (
-                <motion.span layoutId="kindpill" className={clsx("absolute inset-0 rounded-full", k === "verhuizen" ? "bg-brand" : "bg-sun")} transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }} />
-              )}
-              <span className="relative">{k === "verhuizen" ? "Verhuizen" : "Sjouwhulp & Hospitality"}</span>
+              {k === "verhuizen" ? "Verhuizen" : "Sjouwhulp & Hospitality"}
             </button>
           ))}
         </div>
@@ -87,39 +82,52 @@ export const QuoteForm = ({ defaultKind = "verhuizen" }: { defaultKind?: BranchK
         <motion.form
           key={kind}
           onSubmit={onSubmit}
-          className={clsx("mx-auto mt-10 max-w-4xl", accent)}
+          className={clsx("nb-form mx-auto mt-10 max-w-3xl", kind === "sjouwhulp" && "nb-form--sjouwhulp")}
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.45 }}
         >
-          <div className="divide-y divide-ink/10 border-y border-ink/10">
+          <p className="nb-title">
+            {kind === "verhuizen" ? "Gratis verhuisofferte" : "Sjouwhulp aanvragen"}
+            <span>Vul in wat je weet, wij doen de rest. Reactie binnen 24 uur.</span>
+          </p>
+
+          <div className="grid gap-x-6 gap-y-5 md:grid-cols-2">
             {FIELDS[kind].map((f) => (
-              <label key={f.name} className="grid items-center gap-1 py-4 md:grid-cols-[180px_1fr] md:gap-6">
-                <span className="kicker text-ink/50">{f.label}{f.required && " *"}</span>
+              <label key={f.name} className={clsx("block", f.wide && "md:col-span-2")}>
+                <span className="nb-label">{f.label}{f.required && " *"}</span>
                 {f.type === "select" ? (
-                  <select name={f.name} defaultValue={f.options?.[0]} className={input}>
+                  <select name={f.name} defaultValue={f.options?.[0]} className="nb-input">
                     {f.options?.map((o) => <option key={o}>{o}</option>)}
                   </select>
                 ) : f.type === "textarea" ? (
-                  <textarea name={f.name} rows={2} placeholder={f.placeholder} className={input} />
+                  <textarea name={f.name} rows={3} placeholder={f.placeholder} className="nb-input" />
                 ) : (
-                  <input name={f.name} type={f.type ?? "text"} required={f.required} placeholder={f.placeholder} className={input} />
+                  <input name={f.name} type={f.type ?? "text"} required={f.required} placeholder={f.placeholder} className="nb-input" />
                 )}
               </label>
             ))}
           </div>
 
-          <div className="mt-8 flex flex-col-reverse items-start justify-between gap-6 md:flex-row md:items-center">
-            <p className="max-w-sm text-xs text-ink/50">
-              Je aanvraag opent in WhatsApp, zodat je hem kunt nalezen. Reactie binnen 24 uur. Liever bellen? {SITE.phones[0].label}
-            </p>
-            <div className="flex items-center gap-6">
-              <p className="text-sm uppercase text-ink">Gratis <span className="font-bold">offerte</span></p>
-              <button type="submit" className={clsx("btn !shadow-[0_4px_20px_rgba(0,0,0,0.12)] hover:!shadow-[0_7px_29px_var(--btn-glow)]", kind === "sjouwhulp" && "btn-sun")}>
-                <Whatsapp className="h-4 w-4" /> Versturen
-              </button>
+          <div className="mt-4 flex flex-col-reverse items-start justify-between gap-6 md:flex-row md:items-center">
+            <div>
+              <p className="nb-label !mb-3">Of neem direct contact op</p>
+              <div className="nb-row">
+                <a className="nb-round" href={whatsappLink("Hoi WE MOVE!")} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><Whatsapp /></a>
+                <a className="nb-round" href={SITE.phones[0].href} aria-label="Bellen"><Phone /></a>
+                <a className="nb-round" href={`mailto:${SITE.email}`} aria-label="E-mail">
+                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" /></svg>
+                </a>
+                <a className="nb-round" href={SITE.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" /></svg>
+                </a>
+              </div>
             </div>
+            <button type="submit" className="nb-confirm">
+              <Whatsapp className="h-5 w-5" /> Versturen
+            </button>
           </div>
+          <p className="text-xs text-[color:var(--font-color-sub)]">Je aanvraag opent in WhatsApp, zodat je hem nog kunt nalezen voor je hem verstuurt.</p>
         </motion.form>
       </div>
     </div>

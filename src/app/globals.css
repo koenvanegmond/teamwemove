@@ -138,3 +138,94 @@ details > summary::-webkit-details-marker { display: none; }
 .road::after { content: ""; position: absolute; width: 10px; height: 100%; background-color: #282828; right: -65%; border-radius: 3px; animation: roadAnimation 1.4s linear infinite; border-left: 4px solid white; }
 .lampPost { position: absolute; bottom: 0; right: -90%; height: 90px; animation: roadAnimation 1.4s linear infinite; }
 @keyframes roadAnimation { 0% { transform: translateX(0px); } 100% { transform: translateX(-350px); } }
+
+/* Formulier (gebaseerd op Uiverse.io, ayyjayy2), in WE MOVE-kleuren.
+   Kleuren per tak via .nb-form--verhuizen / .nb-form--sjouwhulp */
+.nb-form {
+  --input-focus: #0e3ca0;
+  --font-color: #0b1226;
+  --font-color-sub: #5b6475;
+  --bg-color: #ffffff;
+  --main-color: #0b1226;
+  --card-bg: #eaf0ff;
+  --accent: #0e3ca0;
+  padding: 28px;
+  background: var(--card-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+  transition: background-color 0.4s ease;
+}
+.nb-form--sjouwhulp { --input-focus: #e68a00; --card-bg: #fff1dc; --accent: #ff9f0a; }
+.nb-title { color: var(--font-color); font-weight: 800; font-style: italic; text-transform: uppercase; font-size: 22px; line-height: 1.1; }
+.nb-title span { display: block; color: var(--font-color-sub); font-weight: 500; font-style: normal; text-transform: none; font-size: 16px; margin-top: 6px; }
+.nb-label { display: block; margin-bottom: 8px; font-size: 13px; font-weight: 600; color: var(--font-color); }
+.nb-input {
+  width: 100%;
+  height: 44px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  background-color: var(--bg-color);
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--font-color);
+  padding: 5px 12px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+textarea.nb-input { height: auto; min-height: 88px; padding-top: 10px; resize: vertical; }
+.nb-input::placeholder { color: var(--font-color-sub); opacity: 0.8; font-weight: 500; }
+.nb-input:focus { border: 2px solid var(--input-focus); box-shadow: 4px 4px var(--input-focus); }
+.nb-row { display: flex; gap: 20px; flex-wrap: wrap; }
+.nb-round {
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  border-radius: 100%;
+  border: 2px solid var(--main-color);
+  background-color: var(--bg-color);
+  box-shadow: 4px 4px var(--main-color);
+  color: var(--font-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s, color 0.2s;
+}
+.nb-round:hover { background-color: var(--accent); color: #fff; }
+.nb-round:active, .nb-confirm:active, .nb-tab:active { box-shadow: 0px 0px var(--main-color); transform: translate(3px, 3px); }
+.nb-confirm {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 28px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  background-color: var(--accent);
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.nb-confirm:hover { transform: translate(-1px, -1px); box-shadow: 6px 6px var(--main-color); }
+.nb-tab {
+  height: 44px;
+  padding: 0 20px;
+  border-radius: 5px;
+  border: 2px solid #0b1226;
+  background: #fff;
+  box-shadow: 4px 4px #0b1226;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0b1226;
+  transition: background-color 0.3s, color 0.3s;
+}
+.nb-tab[aria-pressed="true"].is-verhuizen { background: #0e3ca0; color: #fff; }
+.nb-tab[aria-pressed="true"].is-sjouwhulp { background: #ff9f0a; color: #fff; }
