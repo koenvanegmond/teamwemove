@@ -7,7 +7,7 @@ import clsx from "clsx";
 import { other, type Branch } from "@/lib/branches";
 import { whatsappLink } from "@/lib/site";
 import { Art, Duotone } from "./Art";
-import { Chevron, Expand, Whatsapp } from "./Icons";
+import { Chevron, Whatsapp } from "./Icons";
 import { BackButton } from "./BackButton";
 import { FadeUp, RevealLines } from "./Reveal";
 
@@ -76,13 +76,16 @@ export const BranchHero = ({ b }: { b: Branch }) => {
 
         <motion.a
           href="#meer"
-          aria-label="Lees meer"
-          className="absolute bottom-6 right-6 z-10 hidden h-16 w-16 items-center justify-center rounded-2xl bg-white/25 backdrop-blur-md transition hover:bg-white hover:text-ink md:flex md:bottom-10 md:right-10 md:h-20 md:w-20"
+          aria-label="Ontdek alles"
+          className="scrollBtn absolute bottom-6 right-6 z-10 md:bottom-10 md:right-10"
+          style={{ "--scroll-hover": b.key === "verhuizen" ? "#FF9F0A" : "#0E3CA0" } as React.CSSProperties}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.7 }}
         >
-          <Expand className="h-7 w-7" />
+          <svg className="svgIcon" viewBox="0 0 384 512" aria-hidden="true">
+            <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
+          </svg>
         </motion.a>
       </div>
 
