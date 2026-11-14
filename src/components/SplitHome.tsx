@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import clsx from "clsx";
 import { BRANCHES, type Branch, type BranchKey } from "@/lib/branches";
 import { Art, Duotone } from "./Art";
+import { BgVideo } from "./BgVideo";
 import { Chevron } from "./Icons";
 import { CtaInner } from "./Cta";
 import { RevealLines, FadeUp } from "./Reveal";
@@ -53,7 +54,11 @@ export const SplitHome = () => {
           transition={{ duration: go ? 0.75 : 0.6, ease }}
           onAnimationComplete={() => go === b.key && router.push(b.href)}
         >
-          {b.image && <Duotone src={b.image} color={b.color} />}
+          {b.videos && b.videos.length > 0 ? (
+            <BgVideo clips={b.videos} color={b.color} />
+          ) : (
+            b.image && <Duotone src={b.image} color={b.color} />
+          )}
 
           <div
             className={clsx(

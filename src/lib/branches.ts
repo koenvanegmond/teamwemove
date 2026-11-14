@@ -21,6 +21,8 @@ export type Branch = {
   whatsapp: string;
   // Zet een foto in /public/images en vul het pad in, bv. "/images/verhuizen.jpg".
   image?: string;
+  // Achtergrondvideo's op de homepage (in /public/video), spelen na elkaar af.
+  videos?: { src: string; poster: string }[];
 };
 
 export const BRANCHES: Record<BranchKey, Branch> = {
@@ -69,6 +71,7 @@ export const BRANCHES: Record<BranchKey, Branch> = {
     ],
     cta: "Offerte aanvragen",
     whatsapp: "Hoi WE MOVE, ik wil graag verhuizen.",
+    videos: [{ src: "/video/reel1.mp4", poster: "/video/reel1.jpg" }],
   },
   sjouwhulp: {
     key: "sjouwhulp",
@@ -113,6 +116,7 @@ export const BRANCHES: Record<BranchKey, Branch> = {
     ],
     cta: "Aanvraag doen",
     whatsapp: "Hoi WE MOVE, ik heb sjouwhulp nodig.",
+    videos: [{ src: "/video/reel2.mp4", poster: "/video/reel2.jpg" }],
   },
 };
 
