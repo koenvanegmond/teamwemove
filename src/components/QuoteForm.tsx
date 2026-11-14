@@ -93,7 +93,7 @@ export const QuoteForm = ({ defaultKind = "verhuizen" }: { defaultKind?: BranchK
         >
           <p className="nb-title">
             {kind === "verhuizen" ? "Gratis verhuisofferte" : "Sjouwhulp aanvragen"}
-            <span>Vul in wat je weet, wij doen de rest. Reactie binnen 24 uur.</span>
+            <span>Vul in wat je weet.</span>
           </p>
 
           <div className="grid gap-x-6 gap-y-5 md:grid-cols-2">
@@ -128,7 +128,7 @@ export const QuoteForm = ({ defaultKind = "verhuizen" }: { defaultKind?: BranchK
               <Whatsapp className="h-5 w-5" /> Versturen
             </button>
           </div>
-          <p className="text-xs text-[color:var(--font-color-sub)]">Je aanvraag opent in WhatsApp, zodat je hem nog kunt nalezen voor je hem verstuurt.</p>
+          <p className="text-xs text-[color:var(--font-color-sub)]">Je aanvraag opent in WhatsApp.</p>
         </motion.form>
 
         <div className="mx-auto mt-14 flex max-w-3xl flex-col items-center gap-4">

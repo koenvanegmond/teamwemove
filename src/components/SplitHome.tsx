@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import clsx from "clsx";
-import { BRANCHES, type Branch, type BranchKey } from "@/lib/branches";
+import { BRANCHES, titleScale, type Branch, type BranchKey } from "@/lib/branches";
 import { Art, Duotone } from "./Art";
 import { BgVideo } from "./BgVideo";
 import { Chevron } from "./Icons";
@@ -89,10 +89,18 @@ export const SplitHome = () => {
                 as="h2"
                 lines={b.title}
                 delay={0.2 + idx * 0.1}
-                className="display mt-3 text-[clamp(2.4rem,5.4vw,5.2rem)] drop-shadow-sm"
+                className="display mt-3 drop-shadow-sm"
+                style={{ fontSize: `calc(clamp(2.4rem, 5.4vw, 5.2rem) * ${titleScale(b.title)})` }}
               />
               <FadeUp delay={0.45 + idx * 0.1}>
-                <p className="mt-4 hidden max-w-[340px] text-sm leading-relaxed text-white/85 sm:block">{b.short}</p>
+                <ul className="mt-5 hidden space-y-1.5 text-sm text-white/90 sm:block">
+                  {b.homeBullets.map((t) => (
+                    <li key={t} className="flex items-center gap-2.5">
+                      <span className="h-[3px] w-3 rounded-full bg-white/80" />
+                      {t}
+                    </li>
+                  ))}
+                </ul>
                 <span className="mt-7 inline-flex pl-1">
                   <span
                     className="cta"

@@ -17,8 +17,8 @@ export const BranchContent = ({ b }: { b: Branch }) => {
   return (
     <div id="meer" className="scroll-mt-16 bg-white">
       <section className="container py-20 md:py-28">
-        <InView><p className={clsx("kicker", accent)}>Wat we doen</p></InView>
-        <InView><H2 accent={accent}>Onze diensten</H2></InView>
+        <InView><p className={clsx("kicker", accent)}>Diensten</p></InView>
+        <InView><H2 accent={accent}>{b.key === "verhuizen" ? "Wat we verhuizen" : "Wat we doen"}</H2></InView>
         <div className="mt-12 grid border-t border-ink/10 md:grid-cols-2 lg:grid-cols-3">
           {b.services.map((s, i) => (
             <InView key={s.title} delay={(i % 3) * 0.06}>
@@ -53,7 +53,7 @@ export const BranchContent = ({ b }: { b: Branch }) => {
       <section className="container grid gap-12 py-20 md:grid-cols-2 md:py-28">
         <div>
           <InView><p className={clsx("kicker", accent)}>Waarom WE MOVE</p></InView>
-          <InView><H2 accent={accent}>Gewoon goed geregeld</H2></InView>
+          <InView><H2 accent={accent}>Waarom wij</H2></InView>
           <ul className="mt-8 space-y-4">
             {b.why.map((w) => (
               <InView key={w}>
@@ -77,6 +77,7 @@ export const BranchContent = ({ b }: { b: Branch }) => {
         </div>
         <div>
           <InView><p className={clsx("kicker", accent)}>Vragen</p></InView>
+          <h2 className="mt-2 text-2xl font-bold italic text-ink">{b.key === "verhuizen" ? "Vragen over verhuizen" : "Vragen over sjouwhulp"}</h2>
           <div className="mt-6">
             <FaqMenu items={b.faq} color={b.color} />
           </div>
@@ -85,7 +86,7 @@ export const BranchContent = ({ b }: { b: Branch }) => {
 
       <section className={clsx("text-white", b.colorClass)}>
         <div className="container flex flex-col items-start justify-between gap-8 py-16 md:flex-row md:items-center md:py-20">
-          <h2 className="display text-4xl md:text-6xl">Binnen 24 uur<br />een offerte.</h2>
+          <h2 className="display text-4xl md:text-6xl">{b.key === "verhuizen" ? "Snel een prijs?" : "Extra handen nodig?"}</h2>
           <Link
             href={`/contact?type=${b.key}`}
             className={clsx("btn", b.key === "verhuizen" ? "btn-coral" : "")}

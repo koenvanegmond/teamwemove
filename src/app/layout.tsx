@@ -6,7 +6,9 @@ import { MotionConfig } from "framer-motion";
 import "./globals.css";
 import { TopBar } from "@/components/TopBar";
 import { SplashProvider } from "@/components/Splash";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import { SITE } from "@/lib/site";
+import { JsonLd, ORG_JSONLD } from "@/lib/jsonld";
 
 // Supreme (Fontshare, ITF Free Font License): zelf gehost voor deze website.
 const supreme = localFont({
@@ -20,9 +22,9 @@ const supreme = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: { default: "WE MOVE | Verhuizen en sjouwhulp in Den Haag", template: "%s | WE MOVE" },
+  title: { default: "WE MOVE | Verhuisbedrijf & sjouwhulp in de Randstad", template: "%s | WE MOVE" },
   description:
-    "WE MOVE: verhuisbedrijf in Den Haag met 6+ jaar ervaring. Ook sjouwhulp en hospitality-personeel voor evenementen. Offerte binnen 24 uur.",
+    "Verhuizen of extra handen nodig? WE MOVE verhuist particulieren en bedrijven in de Randstad, Bollenstreek en heel Nederland. Vaste prijs vooraf.",
   openGraph: { type: "website", locale: "nl_NL", siteName: "WE MOVE" },
 };
 
@@ -30,6 +32,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="nl" className={supreme.variable}>
       <body className={clsx("bg-white font-sans text-ink antialiased")}>
+        <JsonLd data={ORG_JSONLD} />
+        <SmoothScroll />
         <MotionConfig reducedMotion="user">
           <SplashProvider>
             <TopBar />

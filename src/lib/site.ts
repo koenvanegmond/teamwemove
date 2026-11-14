@@ -1,7 +1,7 @@
 // Centrale bedrijfsgegevens. Pas het hier aan, het komt op de hele site terug.
 export const SITE = {
   name: "WE MOVE",
-  tagline: "Verhuizen en sjouwhulp in Den Haag",
+  tagline: "Verhuisbedrijf en sjouwhulp in de Randstad",
   url: "https://teamwemove.nl",
   // Nieuw mailadres zodra de mailbox op het nieuwe domein staat.
   email: "office@infowemove.com",
@@ -14,7 +14,7 @@ export const SITE = {
   linkedin: "https://www.linkedin.com/in/koen-van-egmond-180a59325/",
   kvk: "95852476",
   owners: "Weizenbach & Egmond",
-  experience: "6+ jaar ervaring",
+  experience: "Jaren ervaring",
 } as const;
 
 export const whatsappLink = (text?: string) =>

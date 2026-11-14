@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import clsx from "clsx";
-import { other, type Branch } from "@/lib/branches";
+import { other, titleScale, type Branch } from "@/lib/branches";
 import { whatsappLink } from "@/lib/site";
 import { Art, Duotone } from "./Art";
 import { Chevron, Whatsapp } from "./Icons";
@@ -50,10 +50,13 @@ export const BranchHero = ({ b }: { b: Branch }) => {
             <FadeUp delay={0.1}>
               <p className="kicker mt-8 text-white/80">{b.kicker}</p>
             </FadeUp>
-            <RevealLines lines={b.title} className="display mt-3 text-[clamp(2.8rem,6.6vw,6.4rem)]" />
+            <RevealLines
+              lines={b.title}
+              className="display mt-3"
+              style={{ fontSize: `calc(clamp(2.8rem, 6.6vw, 6.4rem) * ${titleScale(b.title, 8)})` }}
+            />
             <FadeUp delay={0.45}>
-              <p className="mt-5 max-w-[420px] text-[15px] leading-relaxed text-white/85">{b.intro}</p>
-              <ul className="mt-5 grid max-w-[440px] grid-cols-2 gap-x-6 gap-y-1.5 text-sm text-white/90">
+                            <ul className="mt-6 grid max-w-[460px] grid-cols-2 gap-x-6 gap-y-1.5 text-sm text-white/90">
                 {b.bullets.map((t) => (
                   <li key={t} className="flex items-center gap-2">
                     <span className="h-1 w-3 rounded-full bg-white/70" />

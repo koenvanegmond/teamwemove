@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import clsx from "clsx";
 
 // Veelgestelde vragen: klik op een vraag om het antwoord open te klappen.
@@ -23,19 +23,16 @@ export const FaqMenu = ({ items, color }: { items: { q: string; a: string }[]; c
                 <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
               </svg>
             </button>
-            <AnimatePresence initial={false}>
-              {isOpen && (
-                <motion.div
-                  className="faq-panel"
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
-                >
-                  <p>{f.a}</p>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <motion.div
+              className="faq-panel"
+              initial={false}
+              animate={isOpen ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
+              transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
+              style={{ borderWidth: isOpen ? undefined : 0 }}
+              aria-hidden={!isOpen}
+            >
+              <p>{f.a}</p>
+            </motion.div>
           </div>
         );
       })}

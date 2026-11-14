@@ -8,16 +8,18 @@ export const RevealLines = ({
   className = "",
   delay = 0.15,
   as = "h1",
+  style,
 }: {
   lines: string[];
   className?: string;
   delay?: number;
   as?: "h1" | "h2";
+  style?: React.CSSProperties;
 }) => {
   const Tag = as;
   const ready = useSplashDone();
   return (
-    <Tag className={className}>
+    <Tag className={className} style={style}>
       {lines.map((l, i) => (
         <span key={l} className="block overflow-hidden pb-[0.06em] pr-[0.1em]">
           <motion.span
@@ -59,10 +61,10 @@ export const FadeUp = ({
 export const InView = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
   <motion.div
     className={className}
-    initial={{ opacity: 0, y: 24 }}
+    initial={{ opacity: 0, y: 36 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-60px" }}
-    transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+    viewport={{ once: true, margin: "-80px" }}
+    transition={{ duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] }}
   >
     {children}
   </motion.div>

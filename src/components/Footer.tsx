@@ -10,7 +10,7 @@ export const Footer = () => (
         <Link href="/" aria-label="Naar de homepage" className="inline-block transition hover:opacity-80">
           <Logo size="lg" className="text-white" />
         </Link>
-        <p className="mt-3 max-w-xs text-sm">Verhuizen en sjouwhulp in Den Haag.</p>
+        <p className="mt-3 max-w-xs text-sm">Verhuizen en sjouwhulp. Randstad, Bollenstreek en heel Nederland.</p>
         <div className="mt-6"><Socials variant="dark" /></div>
       </div>
       <div className="grid grid-cols-2 gap-x-14 text-sm">
