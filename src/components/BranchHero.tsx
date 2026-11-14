@@ -82,7 +82,7 @@ export const BranchHero = ({ b }: { b: Branch }) => {
           href="#meer"
           aria-label="Ontdek alles"
           className="scrollBtn absolute bottom-6 right-6 z-10 md:bottom-10 md:right-10"
-          style={{ "--scroll-hover": b.key === "verhuizen" ? "#FF9F0A" : "#0E3CA0" } as React.CSSProperties}
+          style={{ "--scroll-hover": b.key === "verhuizen" ? "#C84B11" : "#0E3CA0" } as React.CSSProperties}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.7 }}

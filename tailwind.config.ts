@@ -7,7 +7,7 @@ const config: Config = {
     extend: {
       colors: {
         brand: { DEFAULT: "#0E3CA0", dark: "#0A2B75", soft: "#EAF0FF" },
-        sun: { DEFAULT: "#FF9F0A", dark: "#E68A00" },
+        sun: { DEFAULT: "#C84B11", dark: "#A33C0D" },
         ink: "#0B1226",
         paper: "#ECEDEF",
       },

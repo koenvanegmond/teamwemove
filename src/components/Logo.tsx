@@ -7,34 +7,36 @@ export const LogoMark = ({ className = "h-7 w-auto" }: { className?: string }) =
   </svg>
 );
 
-// Alleen het woord "WE MOVE" uit het logo (rest van de regel valt buiten beeld).
-export const LogoWord = ({ className = "h-[15px] w-auto" }: { className?: string }) => (
+// Het woord "WE MOVE" uit het originele logo.
+export const LogoWord = ({ className = "h-[17px] w-auto" }: { className?: string }) => (
   <svg viewBox="124 424 376 74" fill="currentColor" fillRule="evenodd" className={className} aria-hidden="true">
     <path d={LOGO_WORDMARK} />
   </svg>
 );
 
-// Compacte versie voor de bovenbalk: doosje + WE MOVE naast elkaar.
-export const Logo = ({ className = "" }: { className?: string }) => (
-  <span className={`inline-flex items-center gap-2.5 ${className}`}>
-    <LogoMark className="h-7 w-auto" />
-    <LogoWord className="h-[17px] w-auto" />
-    <span className="sr-only">WE MOVE</span>
-  </span>
-);
-
-// Volledig logo zoals aangeleverd: doosje boven, "WE MOVE | Weizenbach & Egmond" eronder.
-export const LogoFull = ({
-  className = "h-16 w-auto",
-  iconColor = "currentColor",
-  textColor = "currentColor",
+// Het WE MOVE-logo: doosje + "WE MOVE". Kleur via currentColor,
+// of per onderdeel met iconClass / wordClass. size bepaalt de grootte.
+export const Logo = ({
+  className = "",
+  iconClass = "",
+  wordClass = "",
+  size = "md",
 }: {
   className?: string;
-  iconColor?: string;
-  textColor?: string;
-}) => (
-  <svg viewBox="110 115 1380 395" fillRule="evenodd" className={className} role="img" aria-label="WE MOVE | Weizenbach & Egmond">
-    <path d={LOGO_ICON} fill={iconColor} />
-    <path d={LOGO_WORDMARK} fill={textColor} />
-  </svg>
-);
+  iconClass?: string;
+  wordClass?: string;
+  size?: "md" | "lg" | "xl";
+}) => {
+  const s = {
+    md: ["h-7", "h-[17px]", "gap-2.5"],
+    lg: ["h-10", "h-[24px]", "gap-3.5"],
+    xl: ["h-14", "h-[34px]", "gap-5"],
+  }[size];
+  return (
+    <span className={`inline-flex items-center ${s[2]} ${className}`}>
+      <LogoMark className={`${s[0]} w-auto ${iconClass}`} />
+      <LogoWord className={`${s[1]} w-auto ${wordClass}`} />
+      <span className="sr-only">WE MOVE</span>
+    </span>
+  );
+};

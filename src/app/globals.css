@@ -60,7 +60,7 @@ details > summary::-webkit-details-marker { display: none; }
   color: #fff;
   box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.6);
 }
-.btn-sun { --btn-hover: #ff9f0a; --btn-glow: rgba(255, 159, 10, 0.6); }
+.btn-sun { --btn-hover: #c84b11; --btn-glow: rgba(200, 75, 17, 0.55); }
 .btn-ink { --btn-hover: #0b1226; --btn-glow: rgba(11, 18, 38, 0.45); }
 @media (max-width: 479px) {
   .btn { padding: 15px 28px; font-size: 13px; }
@@ -71,8 +71,8 @@ details > summary::-webkit-details-marker { display: none; }
 .cta {
   --cta-bg: #fff;
   --cta-fg: #0e3ca0;
-  --cta-hover-shadow: #ff9f0a;
-  --cta-flash: #ff9f0a;
+  --cta-hover-shadow: #c84b11;
+  --cta-flash: #c84b11;
   display: inline-flex;
   align-items: center;
   padding: 11px 33px;
@@ -159,7 +159,7 @@ details > summary::-webkit-details-marker { display: none; }
   box-shadow: 4px 4px var(--main-color);
   transition: background-color 0.4s ease;
 }
-.nb-form--sjouwhulp { --input-focus: #e68a00; --card-bg: #fff1dc; --accent: #ff9f0a; }
+.nb-form--sjouwhulp { --input-focus: #a33c0d; --card-bg: #faeae2; --accent: #c84b11; }
 .nb-title { color: var(--font-color); font-weight: 800; font-style: italic; text-transform: uppercase; font-size: 22px; line-height: 1.1; }
 .nb-title span { display: block; color: var(--font-color-sub); font-weight: 500; font-style: normal; text-transform: none; font-size: 16px; margin-top: 6px; }
 .nb-label { display: block; margin-bottom: 8px; font-size: 13px; font-weight: 600; color: var(--font-color); }
@@ -228,7 +228,7 @@ textarea.nb-input { height: auto; min-height: 88px; padding-top: 10px; resize: v
   transition: background-color 0.3s, color 0.3s;
 }
 .nb-tab[aria-pressed="true"].is-verhuizen { background: #0e3ca0; color: #fff; }
-.nb-tab[aria-pressed="true"].is-sjouwhulp { background: #ff9f0a; color: #fff; }
+.nb-tab[aria-pressed="true"].is-sjouwhulp { background: #c84b11; color: #fff; }
 
 /* Social-knoppen (gebaseerd op Uiverse.io, vinodjangid07). Alleen Instagram en LinkedIn. */
 .socialCard {
@@ -267,7 +267,7 @@ textarea.nb-input { height: auto; min-height: 88px; padding-top: 10px; resize: v
 
 /* Scrollknop "Ontdek alles" (gebaseerd op Uiverse.io, vinodjangid07). */
 .scrollBtn {
-  --scroll-hover: #ff9f0a;
+  --scroll-hover: #c84b11;
   width: 50px;
   height: 50px;
   border-radius: 50%;

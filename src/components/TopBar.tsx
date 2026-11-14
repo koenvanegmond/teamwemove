@@ -83,7 +83,7 @@ export const TopBar = () => {
               <button type="button" onClick={() => setOpen(false)} className="flex items-center gap-2 text-sm" aria-label="Sluit menu">
                 <Close /> Sluiten
               </button>
-              <Logo className="text-brand" />
+              <Logo iconClass="text-brand" wordClass="text-ink" />
               <span className="w-20" />
             </div>
             <nav className="container flex flex-1 flex-col justify-center gap-1">

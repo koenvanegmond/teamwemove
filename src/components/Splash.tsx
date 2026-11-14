@@ -2,7 +2,7 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { TruckLoader } from "./TruckLoader";
-import { LogoFull } from "./Logo";
+import { Logo } from "./Logo";
 
 // Laadscherm met rijdende wagen: verschijnt elke keer dat de site geopend wordt.
 // Animaties op de pagina wachten tot dit scherm weg is (useSplashDone).
@@ -39,7 +39,7 @@ export const SplashProvider = ({ children }: { children: ReactNode }) => {
             transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
           >
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <LogoFull className="h-16 w-auto md:h-20" iconColor="#0E3CA0" textColor="#0B1226" />
+              <Logo size="xl" iconClass="text-brand" wordClass="text-ink" />
             </motion.div>
             <TruckLoader />
             <p className="kicker text-ink/50">We move…</p>

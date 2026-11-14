@@ -7,7 +7,7 @@ import { whatsappLink, SITE } from "@/lib/site";
 import type { BranchKey } from "@/lib/branches";
 import { Close, Phone, Whatsapp } from "./Icons";
 import { Socials } from "./Socials";
-import { LogoFull } from "./Logo";
+import { Logo } from "./Logo";
 
 type Field = { name: string; label: string; type?: "text" | "tel" | "date" | "select" | "textarea"; options?: string[]; placeholder?: string; required?: boolean; wide?: boolean };
 
@@ -52,7 +52,9 @@ export const QuoteForm = ({ defaultKind = "verhuizen" }: { defaultKind?: BranchK
       <div className={clsx("absolute inset-x-0 top-0 h-2 transition-colors duration-500", kind === "verhuizen" ? "bg-brand" : "bg-sun")} />
       <div className="container pb-20 pt-12 md:pt-14">
         <div className="flex items-start justify-between">
-          <LogoFull className="h-10 w-auto md:h-12" iconColor="#0E3CA0" textColor="#0B1226" />
+          <Link href="/" aria-label="Naar de homepage" className="transition hover:opacity-70">
+            <Logo iconClass="text-brand" wordClass="text-ink" />
+          </Link>
           <Link href="/" className="group flex items-center gap-2 text-xs text-ink/60 hover:text-ink">
             Sluiten <span className="rounded-full p-2 transition group-hover:rotate-90 group-hover:bg-paper"><Close className="h-4 w-4" /></span>
           </Link>

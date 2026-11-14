@@ -64,8 +64,8 @@ export const SplitHome = () => {
             className={clsx(
               "absolute",
               idx === 0
-                ? "right-[-6%] top-[14%] h-[42%] w-[42%] opacity-50 md:opacity-100 md:bottom-[-6%] md:right-[-8%] md:top-auto md:h-[60vh] md:w-[60vh]"
-                : "right-[-4%] top-[10%] h-[40%] w-[40%] opacity-50 md:opacity-100 md:bottom-[4%] md:right-[-2%] md:top-auto md:h-[44vh] md:w-[44vh]"
+                ? "right-[6%] top-[16%] h-[16%] w-[16%] md:bottom-[9%] md:right-[7%] md:top-auto md:h-[20vh] md:w-[20vh]"
+                : "right-[6%] top-[16%] h-[16%] w-[16%] md:bottom-[18%] md:right-[7%] md:top-auto md:h-[20vh] md:w-[20vh]"
             )}
             >
             <motion.div
@@ -73,7 +73,7 @@ export const SplitHome = () => {
               animate={{ scale: hover === b.key ? 1.06 : 1, opacity: go && go !== b.key ? 0 : 1 }}
             transition={{ duration: 0.6, ease }}
           >
-            <Art kind={b.key} className="h-full w-full opacity-90" />
+            <Art kind="verhuizen" className="h-full w-full opacity-90" />
             </motion.div>
           </div>
 
@@ -98,8 +98,8 @@ export const SplitHome = () => {
                     className="cta"
                     style={
                       (b.key === "verhuizen"
-                        ? { "--cta-fg": "#0E3CA0", "--cta-hover-shadow": "#FF9F0A", "--cta-flash": "#FF9F0A" }
-                        : { "--cta-fg": "#E68A00", "--cta-hover-shadow": "#0E3CA0", "--cta-flash": "#0E3CA0" }) as React.CSSProperties
+                        ? { "--cta-fg": "#0E3CA0", "--cta-hover-shadow": "#C84B11", "--cta-flash": "#C84B11" }
+                        : { "--cta-fg": "#C84B11", "--cta-hover-shadow": "#0E3CA0", "--cta-flash": "#0E3CA0" }) as React.CSSProperties
                     }
                   >
                     <CtaInner label="Ontdek meer" />

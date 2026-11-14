@@ -77,7 +77,7 @@ export const BRANCHES: Record<BranchKey, Branch> = {
     key: "sjouwhulp",
     href: "/sjouwhulp",
     number: "02",
-    color: "#FF9F0A",
+    color: "#C84B11",
     colorClass: "bg-sun",
     textOnColor: "text-white",
     kicker: "Sjouwhulp & Hospitality",
