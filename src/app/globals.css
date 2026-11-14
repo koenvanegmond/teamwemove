@@ -229,3 +229,38 @@ textarea.nb-input { height: auto; min-height: 88px; padding-top: 10px; resize: v
 }
 .nb-tab[aria-pressed="true"].is-verhuizen { background: #0e3ca0; color: #fff; }
 .nb-tab[aria-pressed="true"].is-sjouwhulp { background: #ff9f0a; color: #fff; }
+
+/* Social-knoppen (gebaseerd op Uiverse.io, vinodjangid07). Alleen Instagram en LinkedIn. */
+.socialCard {
+  width: fit-content;
+  height: fit-content;
+  background-color: #eeeeee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px 25px;
+  gap: 20px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.055);
+}
+.socialCard--bare { background: transparent; box-shadow: none; padding: 0; gap: 12px; }
+.socialContainer {
+  width: 52px;
+  height: 52px;
+  background-color: #0b1226;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition-duration: 0.3s;
+}
+.socialCard--onDark .socialContainer { background-color: rgb(255 255 255 / 0.1); }
+.socialInstagram:hover { background-color: #d62976 !important; }
+.socialLinkedin:hover { background-color: #0072b1 !important; }
+.socialContainer:active { transform: scale(0.9); }
+.socialSvg { width: 17px; }
+.socialSvg path { fill: #ffffff; }
+.socialContainer:hover .socialSvg { animation: slide-in-top 0.3s both; }
+@keyframes slide-in-top {
+  0% { transform: translateY(-50px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
 import { SITE } from "@/lib/site";
+import { Socials } from "./Socials";
 
 export const Footer = () => (
   <footer className="bg-ink text-white/70">
@@ -8,6 +9,7 @@ export const Footer = () => (
       <div>
         <Logo className="text-white" />
         <p className="mt-3 max-w-xs text-sm">Verhuizen en sjouwhulp in Den Haag. {SITE.owners}.</p>
+        <div className="mt-6"><Socials variant="dark" /></div>
       </div>
       <div className="grid grid-cols-2 gap-x-14 text-sm">
         <ul className="space-y-2">
@@ -19,10 +21,6 @@ export const Footer = () => (
         <ul className="space-y-2">
           {SITE.phones.map((p) => <li key={p.href}><a href={p.href} className="hover:text-white">{p.label}</a></li>)}
           <li><a href={`mailto:${SITE.email}`} className="hover:text-white">{SITE.email}</a></li>
-          <li className="flex gap-4">
-            <a href={SITE.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-white">Instagram</a>
-            <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white">LinkedIn</a>
-          </li>
         </ul>
       </div>
     </div>

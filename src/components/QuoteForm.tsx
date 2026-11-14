@@ -6,6 +6,7 @@ import clsx from "clsx";
 import { whatsappLink, SITE } from "@/lib/site";
 import type { BranchKey } from "@/lib/branches";
 import { Close, Phone, Whatsapp } from "./Icons";
+import { Socials } from "./Socials";
 
 type Field = { name: string; label: string; type?: "text" | "tel" | "date" | "select" | "textarea"; options?: string[]; placeholder?: string; required?: boolean; wide?: boolean };
 
@@ -118,9 +119,6 @@ export const QuoteForm = ({ defaultKind = "verhuizen" }: { defaultKind?: BranchK
                 <a className="nb-round" href={`mailto:${SITE.email}`} aria-label="E-mail">
                   <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" /></svg>
                 </a>
-                <a className="nb-round" href={SITE.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" /></svg>
-                </a>
               </div>
             </div>
             <button type="submit" className="nb-confirm">
@@ -129,6 +127,11 @@ export const QuoteForm = ({ defaultKind = "verhuizen" }: { defaultKind?: BranchK
           </div>
           <p className="text-xs text-[color:var(--font-color-sub)]">Je aanvraag opent in WhatsApp, zodat je hem nog kunt nalezen voor je hem verstuurt.</p>
         </motion.form>
+
+        <div className="mx-auto mt-14 flex max-w-3xl flex-col items-center gap-4">
+          <p className="kicker text-ink/50">Volg ons</p>
+          <Socials />
+        </div>
       </div>
     </div>
   );

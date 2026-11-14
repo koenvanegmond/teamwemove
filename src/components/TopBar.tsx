@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import clsx from "clsx";
 import { Logo } from "./Logo";
+import { Socials } from "./Socials";
 import { Close, Phone, Whatsapp } from "./Icons";
 import { SITE, whatsappLink } from "@/lib/site";
 
@@ -106,10 +107,10 @@ export const TopBar = () => {
                 </div>
               ))}
             </nav>
-            <div className="container flex flex-wrap gap-x-8 gap-y-2 pb-10 text-sm text-ink/60">
+            <div className="container flex flex-wrap items-center gap-x-8 gap-y-4 pb-10 text-sm text-ink/60">
+              <Socials variant="bare" />
               {SITE.phones.map((p) => <a key={p.href} href={p.href} className="hover:text-brand">{p.label}</a>)}
               <a href={`mailto:${SITE.email}`} className="hover:text-brand">{SITE.email}</a>
-              <a href={SITE.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-brand">Instagram</a>
             </div>
           </motion.div>
         )}
