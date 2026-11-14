@@ -12,7 +12,7 @@ const H2 = ({ children, accent }: { children: React.ReactNode; accent: string })
 );
 
 export const BranchContent = ({ b }: { b: Branch }) => {
-  const accent = b.key === "verhuizen" ? "text-brand" : "text-sun";
+  const accent = b.key === "verhuizen" ? "text-brand" : "text-night";
   return (
     <div id="meer" className="bg-white">
       <section className="container py-20 md:py-28">
@@ -95,7 +95,7 @@ export const BranchContent = ({ b }: { b: Branch }) => {
           <h2 className="display text-4xl md:text-6xl">Binnen 24 uur<br />een offerte.</h2>
           <Link
             href={`/contact?type=${b.key}`}
-            className={clsx("btn", b.key === "verhuizen" ? "btn-sun" : "")}
+            className={clsx("btn", b.key === "verhuizen" ? "btn-night" : "")}
           >
             {b.cta}
           </Link>

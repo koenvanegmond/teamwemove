@@ -7,7 +7,9 @@ export const Footer = () => (
   <footer className="bg-ink text-white/70">
     <div className="container flex flex-col gap-10 py-14 md:flex-row md:justify-between">
       <div>
-        <Logo size="lg" className="text-white" />
+        <Link href="/" aria-label="Naar de homepage" className="inline-block transition hover:opacity-80">
+          <Logo size="lg" className="text-white" />
+        </Link>
         <p className="mt-3 max-w-xs text-sm">Verhuizen en sjouwhulp in Den Haag.</p>
         <div className="mt-6"><Socials variant="dark" /></div>
       </div>

@@ -98,8 +98,8 @@ export const SplitHome = () => {
                     className="cta"
                     style={
                       (b.key === "verhuizen"
-                        ? { "--cta-fg": "#0E3CA0", "--cta-hover-shadow": "#C84B11", "--cta-flash": "#C84B11" }
-                        : { "--cta-fg": "#C84B11", "--cta-hover-shadow": "#0E3CA0", "--cta-flash": "#0E3CA0" }) as React.CSSProperties
+                        ? { "--cta-fg": "#0E3CA0", "--cta-hover-shadow": "#8FB0FF", "--cta-flash": "#8FB0FF" }
+                        : { "--cta-fg": "#0F131A", "--cta-hover-shadow": "#0E3CA0", "--cta-flash": "#0E3CA0" }) as React.CSSProperties
                     }
                   >
                     <CtaInner label="Ontdek meer" />

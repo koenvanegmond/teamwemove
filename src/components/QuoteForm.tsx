@@ -49,7 +49,7 @@ export const QuoteForm = ({ defaultKind = "verhuizen" }: { defaultKind?: BranchK
 
   return (
     <div className="relative">
-      <div className={clsx("absolute inset-x-0 top-0 h-2 transition-colors duration-500", kind === "verhuizen" ? "bg-brand" : "bg-sun")} />
+      <div className={clsx("absolute inset-x-0 top-0 h-2 transition-colors duration-500", kind === "verhuizen" ? "bg-brand" : "bg-night")} />
       <div className="container pb-20 pt-12 md:pt-14">
         <div className="flex items-start justify-between">
           <Link href="/" aria-label="Naar de homepage" className="transition hover:opacity-70">
