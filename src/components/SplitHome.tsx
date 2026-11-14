@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import clsx from "clsx";
 import { BRANCHES, type Branch, type BranchKey } from "@/lib/branches";
 import { Art, Duotone } from "./Art";
-import { Chevron, Expand } from "./Icons";
+import { Chevron } from "./Icons";
 import { CtaInner } from "./Cta";
 import { RevealLines, FadeUp } from "./Reveal";
 
@@ -127,10 +127,10 @@ export const SplitHome = () => {
       {!go && (
         <Link
           href="/contact"
-          aria-label="Offerte aanvragen"
-          className="absolute bottom-6 right-6 z-20 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/25 text-white backdrop-blur-md transition duration-300 hover:scale-105 hover:bg-white hover:text-brand md:bottom-10 md:right-10 md:h-20 md:w-20"
+          className="btn absolute bottom-6 right-6 z-20 shadow-[0_8px_30px_rgba(0,0,0,0.18)] md:bottom-10 md:right-10"
         >
-          <Expand className="h-7 w-7" />
+          Gratis offerte
+          <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 12h15M14 7l5 5-5 5" /></svg>
         </Link>
       )}
     </section>
