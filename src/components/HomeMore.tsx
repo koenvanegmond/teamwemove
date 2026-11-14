@@ -7,6 +7,7 @@ import { BRANCHES, type BranchKey } from "@/lib/branches";
 import { whatsappLink } from "@/lib/site";
 import { InView } from "./Reveal";
 import { Art } from "./Art";
+import { GoogleReviews } from "./GoogleReviews";
 
 // Scrollgedeelte onder de homepage: snel laten zien wat we doen, met een schakelaar
 // tussen Verhuizen en Sjouwhulp & Hospitality (zelfde knoppen als het formulier).
@@ -122,6 +123,8 @@ export const HomeMore = () => {
           </motion.div>
         </AnimatePresence>
       </section>
+
+      <GoogleReviews />
 
       {/* afsluiter */}
       <section className="bg-paper">

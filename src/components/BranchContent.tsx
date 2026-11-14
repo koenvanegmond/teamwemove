@@ -69,7 +69,7 @@ export const BranchContent = ({ b }: { b: Branch }) => {
               {REVIEWS.slice(0, 2).map((r) => (
                 <figure key={r.name + r.text}>
                   <blockquote className="text-lg italic text-ink">“{r.text}”</blockquote>
-                  <figcaption className="mt-1 text-sm text-ink/50">{r.name}{r.source ? ` · ${r.source}` : ""}</figcaption>
+                  <figcaption className="mt-1 text-sm text-ink/50">{r.name} · Google</figcaption>
                 </figure>
               ))}
             </div>
