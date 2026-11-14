@@ -55,18 +55,22 @@ export const SplitHome = () => {
         >
           {b.image && <Duotone src={b.image} color={b.color} />}
 
-          <motion.div
+          <div
             className={clsx(
               "absolute",
               idx === 0
-                ? "right-[-6%] top-[14%] h-[42%] w-[42%] opacity-50 md:opacity-100 md:left-1/2 md:right-auto md:top-1/2 md:h-[62vh] md:w-[62vh] md:-translate-x-1/2 md:-translate-y-1/2"
+                ? "right-[-6%] top-[14%] h-[42%] w-[42%] opacity-50 md:opacity-100 md:bottom-[-6%] md:right-[-8%] md:top-auto md:h-[60vh] md:w-[60vh]"
                 : "right-[-4%] top-[10%] h-[40%] w-[40%] opacity-50 md:opacity-100 md:bottom-[4%] md:right-[-2%] md:top-auto md:h-[44vh] md:w-[44vh]"
             )}
-            animate={{ scale: hover === b.key ? 1.06 : 1, opacity: go && go !== b.key ? 0 : 1 }}
+            >
+            <motion.div
+              className="h-full w-full"
+              animate={{ scale: hover === b.key ? 1.06 : 1, opacity: go && go !== b.key ? 0 : 1 }}
             transition={{ duration: 0.6, ease }}
           >
             <Art kind={b.key} className="h-full w-full opacity-90" />
-          </motion.div>
+            </motion.div>
+          </div>
 
           <motion.div
             className="relative z-10 flex h-full flex-col justify-center px-6 pt-14 md:px-[clamp(28px,5vw,80px)] md:pt-0"

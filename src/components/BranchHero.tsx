@@ -31,14 +31,16 @@ export const BranchHero = ({ b }: { b: Branch }) => {
       {b.image && <Duotone src={b.image} color={b.color} />}
 
       <div className="relative flex min-w-0 flex-1">
-        <motion.div
-          className="absolute right-[-8%] top-[9%] h-[26%] w-[50%] opacity-50 md:opacity-100 md:right-[4%] md:top-1/2 md:h-[66vh] md:w-[66vh] md:-translate-y-1/2"
+        <div className="absolute right-[-8%] top-[9%] h-[26%] w-[50%] opacity-50 md:opacity-100 md:right-[4%] md:top-1/2 md:h-[66vh] md:w-[66vh] md:-translate-y-1/2">
+          <motion.div
+          className="h-full w-full"
           initial={{ opacity: 0, x: 60, rotate: 6 }}
           animate={ready ? { opacity: 1, x: 0, rotate: 0 } : { opacity: 0, x: 60, rotate: 6 }}
           transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         >
           <Art kind={b.key} className="h-full w-full" />
         </motion.div>
+        </div>
 
         <div className="relative z-10 flex w-full flex-col justify-end px-6 pb-10 pt-24 md:justify-center md:px-[clamp(28px,7vw,120px)] md:pb-0">
           <div className="max-w-[560px]">
